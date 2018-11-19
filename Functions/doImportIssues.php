@@ -69,7 +69,8 @@ if (isset($_POST['import']) && !empty($_POST['import'])) {
                         while ($count_current_occupancy_row = mysqli_fetch_array($count_current_occupancy_result)) {
                             $current_occupancy = $count_current_occupancy_row['current_occupy'];
                             $table_occupied = $count_current_occupancy_row['table_no'];
-//                             echo "Current Occupancy: ", $current_occupancy;
+                            echo "Current Occupancy: ", $current_occupancy;
+                            echo "Current Table: ", $table_occupied;
                             //get total seats that is initially available 
                             $get_initial_seats_query = "SELECT table_no, total_seats FROM all_table";
                             $get_initial_seats_result = mysqli_query($dblink, $get_initial_seats_query);
@@ -77,12 +78,15 @@ if (isset($_POST['import']) && !empty($_POST['import'])) {
                                 while ($get_initial_seats_row = mysqli_fetch_array($get_initial_seats_result)) {
                                     $initial_table = $get_initial_seats_row['table_no'];
                                     $initial_seats = $get_initial_seats_row['total_seats'];
-//                                     echo "Initial Table Seats: ", $initial_seats;
+                                    echo "Initial Table Seats: ", $initial_seats;
+                                    echo "Initial Table No: ", $initial_table;
                                     //get balance seats
-                                    $balance_seats = $initial_table - $current_occupancy;
+                                    $balance_seats = $initial_seats - $current_occupancy;
                                     
                                     //insert the balance to available seats
-                                    $insert_balance_query =  "INSERT INTO all_table(available_seats) VALUES ($balance_seats)";
+                                    $insert_balance_query =  "UPDATE all_table SET available_seats = $balance_seats WHERE table_no = $initial_table ";
+                                    $insert_balance_result = mysqli_query($dblink, $insert_balance_query);
+                                    echo $insert_balance_query;
                                 }
                             }
                         }

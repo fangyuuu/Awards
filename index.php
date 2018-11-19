@@ -215,7 +215,7 @@ $(document).ready(function () {
         console.log("Invitor Selected: " + invitor);
         if (invitor != "") {
             $.ajax({
-                url: "../Functions/get-tablephp",
+                url: "Functions/get-table.php",
                 data: {c_id: invitor},
                 type: 'POST',
                 success: function (response) {
