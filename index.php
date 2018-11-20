@@ -38,11 +38,10 @@ include_once "Functions/tableInformation.php";
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
-			<a class="navbar-brand" href="#">Asia Insurance Review 2018</a> <a
-				data-toggle="modal" data-target="#addAttendeeModal"
-				class="btn btn-primary" href="#">Add New Attendee</a> <input
-				data-toggle="modal" data-target="#importModal"
-				class="btn btn-primary" href="#" value="Import">
+			<a class="navbar-brand" href="#">Asia Insurance Review 2018</a> 
+                        <a data-toggle="modal" data-target="#addAttendeeModal" class="btn btn-success" href="#" >Add New Attendee</a> 
+                        <a data-toggle="modal" data-target="#importModal" class="btn btn-primary" href="#" >Import</a>
+                        <a data-toggle="modal" data-target="#removeModal" class="btn btn-danger" href="#" >No Show</a>
 		</div>
 	</nav>
 
@@ -114,8 +113,8 @@ include_once "Functions/tableInformation.php";
 			<div class="modal-content">
 				<form data-toggle="validator" name="f1"
 					enctype="multipart/form-data" method="post"
-					action="../Functions/doAddAttendee.php" class="form-horizontal"
-					role="form">
+					action="Functions/doAddAttendee.php" class="form-horizontal"
+					role="form" onSubmit="window.location.reload();">
 					<div class="modal-header text-center">
 						<h4 class="modal-title w-100 font-weight-bold head2">Add New
 							Attendee</h4>
@@ -147,7 +146,7 @@ include_once "Functions/tableInformation.php";
 											<label for="country">Guest Country</label><label id="mandatory">*</label>
 										</div>
 										<div class="col-sm-9 col-md-9 col-lg-9">
-											<input class="form-control" name="attendee_name"
+											<input class="form-control" name="attendee_country"
 												id="country" data-error="Enter a name." type="text"
 												aria-describedby="nameHelp" placeholder="Enter Country">
 										</div>
@@ -158,7 +157,7 @@ include_once "Functions/tableInformation.php";
 											<label for="company">Guest Company</label><label id="mandatory">*</label>
 										</div>
 										<div class="col-sm-9 col-md-9 col-lg-9">
-											<input class="form-control" name="company"
+											<input class="form-control" name="attendee_company"
 												id="company" data-error="Enter a company." type="text"
 												aria-describedby="nameHelp" placeholder="Enter Company">
 										</div>
@@ -192,7 +191,102 @@ include_once "Functions/tableInformation.php";
 									<div class="form-group">
 										<div class="col-md-3 col-lg-3 col-md-offset-9 pull-right">
 											<input type="submit" name="add_attendee_submit" tabindex="4"
-												id="addbtn" class="form-control btn btn-success" value="Add">
+												id="addbtn" class="form-control btn btn-success" value="Add" style="margin-left: 550px;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+        
+        <!--Remove Attendee modal-->
+	<div class="modal fade" id="removeModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<form data-toggle="validator" name="f1"
+					enctype="multipart/form-data" method="post"
+					action="Functions/doRemoveAttendee.php" class="form-horizontal"
+					role="form" onSubmit="window.location.reload();">
+					<div class="modal-header text-center">
+						<h4 class="modal-title w-100 font-weight-bold head2">Release Attendee</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="container-fluid">
+							<div class="col"></div>
+							<!--Create issue form-->
+							<div class="col-sm-12">
+								<div class="form-group">
+									<div class="form-row">
+										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
+											<label for="client_ticket_id">Guest Name</label><label
+												id="mandatory">*</label>
+										</div>
+										<div class="col-sm-9 col-md-9 col-lg-9">
+											<input class="form-control" name="attendee_name"
+												id="attendee_name" data-error="Enter a name." type="text"
+												aria-describedby="nameHelp" placeholder="Enter Name">
+										</div>
+									</div>
+									</br>
+									<div class="form-row">
+										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
+											<label for="country">Guest Country</label><label id="mandatory">*</label>
+										</div>
+										<div class="col-sm-9 col-md-9 col-lg-9">
+											<input class="form-control" name="attendee_country"
+												id="country" data-error="Enter a name." type="text"
+												aria-describedby="nameHelp" placeholder="Enter Country">
+										</div>
+									</div>
+									</br>
+									<div class="form-row">
+										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
+											<label for="company">Guest Company</label><label id="mandatory">*</label>
+										</div>
+										<div class="col-sm-9 col-md-9 col-lg-9">
+											<input class="form-control" name="attendee_company"
+												id="company" data-error="Enter a company." type="text"
+												aria-describedby="nameHelp" placeholder="Enter Company">
+										</div>
+									</div>
+									</br>
+									<div class="form-row">
+										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
+											<label for="company">Guest of</label><label id="mandatory">*</label>
+										</div>
+										<div class="col-sm-9 col-md-9 col-lg-9">
+											<select class="form-control" name="invitor" id="invitor"
+												required>
+												<option value="">Select Invitor</option>
+												<?php getInvitor();?>
+											</select>
+										</div>
+									</div>
+									</br>
+									<div class="form-row">
+										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
+											<label for="table_no">Table No.</label><label id="mandatory">*</label>
+										</div>
+										<div class="col-sm-9 col-md-9 col-lg-9">
+											<select class="form-control" name="table_no" id="table_no"
+												required>
+												<option value="">Select Table</option>
+											</select>
+										</div>
+									</div>
+									</br>
+									<div class="form-group">
+										<div class="col-md-3 col-lg-3 col-md-offset-9 pull-right">
+											<input type="submit" name="add_attendee_submit" tabindex="4"
+												id="addbtn" class="form-control btn btn-success" value="Add" style="margin-left: 550px;">
 										</div>
 									</div>
 								</div>

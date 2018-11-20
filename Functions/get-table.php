@@ -4,8 +4,8 @@ include_once '../databaseFunctions.php';
 
 if (isset($_POST['c_id'])) {
     
-    $sql = "SELECT att.table_no, att.table_name, att.available_seats FROM all_table att, attendees a 
-WHERE att.table_no = a.table_id AND att.available_seats > 0 AND att.table_name = 
+    $sql = "SELECT att.table_no, att.table_name, att.available_seats FROM all_table att LEFT JOIN attendees a ON a.table_id = att.table_no
+WHERE att.available_seats > 0 AND att.table_name =
 '" . mysqli_real_escape_string($dblink, $_POST['c_id']) . "' GROUP BY att.table_id" ;
     
     $result = mysqli_query($dblink, $sql);

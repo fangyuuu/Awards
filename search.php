@@ -7,7 +7,7 @@ $query = $_GET['search'];
 $query = htmlspecialchars($query);
 // changes characters used in html to their equivalents, for example: < to &gt;
 
-$query = mysql_real_escape_string($query);
+$query = mysqli_real_escape_string($dblink,$query);
 // makes sure nobody uses SQL injection
 
 $raw_results = mysqli_query($dblink, "SELECT * FROM attendees
@@ -44,7 +44,7 @@ $raw_results = mysqli_query($dblink, "SELECT * FROM attendees
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href="index.php">Asia Insurance Review 2018</a>
-                <a class="btn btn-primary" href="#">Add New</a>
+                <a class="btn btn-success pull-right" href="index.php">Back to main page</a>
             </div>
         </nav>
 
