@@ -11,7 +11,7 @@ $query = mysqli_real_escape_string($dblink,$query);
 // makes sure nobody uses SQL injection
 
 $raw_results = mysqli_query($dblink, "SELECT * FROM attendees
-            WHERE (`name` LIKE '%" . $query . "%') ") or die(mysqli_error($dblink));
+            WHERE (`name` LIKE '%" . $query . "%')") or die(mysqli_error($dblink));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,51 +93,34 @@ $raw_results = mysqli_query($dblink, "SELECT * FROM attendees
 
 
         <!-- Footer -->
-        <footer class="footer bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-                        <ul class="list-inline mb-2">
-                            <li class="list-inline-item">
-                                <a href="#">About</a>
-                            </li>
-                            <li class="list-inline-item">&sdot;</li>
-                            <li class="list-inline-item">
-                                <a href="#">Contact</a>
-                            </li>
-                            <li class="list-inline-item">&sdot;</li>
-                            <li class="list-inline-item">
-                                <a href="#">Terms of Use</a>
-                            </li>
-                            <li class="list-inline-item">&sdot;</li>
-                            <li class="list-inline-item">
-                                <a href="#">Privacy Policy</a>
-                            </li>
-                        </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2018. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item mr-3">
-                                <a href="#">
-                                    <i class="fab fa-facebook fa-2x fa-fw"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item mr-3">
-                                <a href="#">
-                                    <i class="fab fa-twitter-square fa-2x fa-fw"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    <i class="fab fa-instagram fa-2x fa-fw"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
+	<footer class="footer bg-light">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 text-center text-lg-left my-auto">
+					<ul class="list-inline mb-2">
+						<li class="list-inline-item"><a href="http://www.meinsurancereview.com/">About</a></li>
+						<li class="list-inline-item">&sdot;</li>
+						<li class="list-inline-item"><a href="http://www.meinsurancereview.com/About-Us/Contact-Us">Contact</a></li>
+					</ul>
+					<p class="text-muted small mb-4 mb-lg-0">&copy; Asia Insurance Review 2018.
+						All Rights Reserved.</p>
+				</div>
+				<div class="col-lg-6 text-center text-lg-right my-auto">
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item mr-3"><a href="https://www.facebook.com/asiainsurancereview/"> <i
+								class="fab fa-facebook fa-2x fa-fw"></i>
+						</a></li>
+						<li class="list-inline-item mr-3"><a href="https://twitter.com/AIReDaily?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"> <i
+								class="fab fa-twitter-square fa-2x fa-fw"></i>
+						</a></li>
+						<li class="list-inline-item"><a href="#"> <i
+								class="fab fa-instagram fa-2x fa-fw"></i>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
 
         <!-- Bootstrap core JavaScript -->
         <script src="vendor/jquery/jquery.min.js"></script>

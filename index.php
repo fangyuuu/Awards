@@ -39,9 +39,10 @@ include_once "Functions/tableInformation.php";
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
 			<a class="navbar-brand" href="#">Asia Insurance Review 2018</a> 
-                        <a data-toggle="modal" data-target="#addAttendeeModal" class="btn btn-success" href="#" >Add New Attendee</a> 
+                        <a data-toggle="modal" data-target="#addAttendeeModal" class="btn btn-primary" href="#" >Add New Attendee</a> 
                         <a data-toggle="modal" data-target="#importModal" class="btn btn-primary" href="#" >Import</a>
-                        <a data-toggle="modal" data-target="#removeModal" class="btn btn-danger" href="#" >No Show</a>
+                        <a class="btn btn-primary" href="overview.php" >Overview</a>
+                        <!--<form method="post" action="Functions/doViewOverview.php"><input type="submit" value="Test"></form>-->
 		</div>
 	</nav>
 
@@ -76,25 +77,21 @@ include_once "Functions/tableInformation.php";
 	<footer class="footer bg-light">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+				<div class="col-lg-6 text-center text-lg-left my-auto">
 					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="#">About</a></li>
+						<li class="list-inline-item"><a href="http://www.meinsurancereview.com/">About</a></li>
 						<li class="list-inline-item">&sdot;</li>
-						<li class="list-inline-item"><a href="#">Contact</a></li>
-						<li class="list-inline-item">&sdot;</li>
-						<li class="list-inline-item"><a href="#">Terms of Use</a></li>
-						<li class="list-inline-item">&sdot;</li>
-						<li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+						<li class="list-inline-item"><a href="http://www.meinsurancereview.com/About-Us/Contact-Us">Contact</a></li>
 					</ul>
-					<p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2018.
+					<p class="text-muted small mb-4 mb-lg-0">&copy; Asia Insurance Review 2018.
 						All Rights Reserved.</p>
 				</div>
-				<div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+				<div class="col-lg-6 text-center text-lg-right my-auto">
 					<ul class="list-inline mb-0">
-						<li class="list-inline-item mr-3"><a href="#"> <i
+						<li class="list-inline-item mr-3"><a href="https://www.facebook.com/asiainsurancereview/"> <i
 								class="fab fa-facebook fa-2x fa-fw"></i>
 						</a></li>
-						<li class="list-inline-item mr-3"><a href="#"> <i
+						<li class="list-inline-item mr-3"><a href="https://twitter.com/AIReDaily?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"> <i
 								class="fab fa-twitter-square fa-2x fa-fw"></i>
 						</a></li>
 						<li class="list-inline-item"><a href="#"> <i
@@ -131,7 +128,7 @@ include_once "Functions/tableInformation.php";
 								<div class="form-group">
 									<div class="form-row">
 										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
-											<label for="client_ticket_id">Guest Name</label><label
+											<label for="name">Guest Name</label><label
 												id="mandatory">*</label>
 										</div>
 										<div class="col-sm-9 col-md-9 col-lg-9">
@@ -191,7 +188,7 @@ include_once "Functions/tableInformation.php";
 									<div class="form-group">
 										<div class="col-md-3 col-lg-3 col-md-offset-9 pull-right">
 											<input type="submit" name="add_attendee_submit" tabindex="4"
-												id="addbtn" class="form-control btn btn-success" value="Add" style="margin-left: 550px;">
+												id="addbtn" class="form-control btn btn-success" value="Add">
 										</div>
 									</div>
 								</div>
@@ -203,100 +200,6 @@ include_once "Functions/tableInformation.php";
 		</div>
 	</div>
         
-        <!--Remove Attendee modal-->
-	<div class="modal fade" id="removeModal" tabindex="-1"
-		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<form data-toggle="validator" name="f1"
-					enctype="multipart/form-data" method="post"
-					action="Functions/doRemoveAttendee.php" class="form-horizontal"
-					role="form" onSubmit="window.location.reload();">
-					<div class="modal-header text-center">
-						<h4 class="modal-title w-100 font-weight-bold head2">Release Attendee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="container-fluid">
-							<div class="col"></div>
-							<!--Create issue form-->
-							<div class="col-sm-12">
-								<div class="form-group">
-									<div class="form-row">
-										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
-											<label for="client_ticket_id">Guest Name</label><label
-												id="mandatory">*</label>
-										</div>
-										<div class="col-sm-9 col-md-9 col-lg-9">
-											<input class="form-control" name="attendee_name"
-												id="attendee_name" data-error="Enter a name." type="text"
-												aria-describedby="nameHelp" placeholder="Enter Name">
-										</div>
-									</div>
-									</br>
-									<div class="form-row">
-										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
-											<label for="country">Guest Country</label><label id="mandatory">*</label>
-										</div>
-										<div class="col-sm-9 col-md-9 col-lg-9">
-											<input class="form-control" name="attendee_country"
-												id="country" data-error="Enter a name." type="text"
-												aria-describedby="nameHelp" placeholder="Enter Country">
-										</div>
-									</div>
-									</br>
-									<div class="form-row">
-										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
-											<label for="company">Guest Company</label><label id="mandatory">*</label>
-										</div>
-										<div class="col-sm-9 col-md-9 col-lg-9">
-											<input class="form-control" name="attendee_company"
-												id="company" data-error="Enter a company." type="text"
-												aria-describedby="nameHelp" placeholder="Enter Company">
-										</div>
-									</div>
-									</br>
-									<div class="form-row">
-										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
-											<label for="company">Guest of</label><label id="mandatory">*</label>
-										</div>
-										<div class="col-sm-9 col-md-9 col-lg-9">
-											<select class="form-control" name="invitor" id="invitor"
-												required>
-												<option value="">Select Invitor</option>
-												<?php getInvitor();?>
-											</select>
-										</div>
-									</div>
-									</br>
-									<div class="form-row">
-										<div class="col-sm-3 col-md-3 col-lg-3 control-label">
-											<label for="table_no">Table No.</label><label id="mandatory">*</label>
-										</div>
-										<div class="col-sm-9 col-md-9 col-lg-9">
-											<select class="form-control" name="table_no" id="table_no"
-												required>
-												<option value="">Select Table</option>
-											</select>
-										</div>
-									</div>
-									</br>
-									<div class="form-group">
-										<div class="col-md-3 col-lg-3 col-md-offset-9 pull-right">
-											<input type="submit" name="add_attendee_submit" tabindex="4"
-												id="addbtn" class="form-control btn btn-success" value="Add" style="margin-left: 550px;">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

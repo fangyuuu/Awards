@@ -34,7 +34,6 @@ if (isset($_POST['import']) && !empty($_POST['import'])) {
 
             $reader->open($tempFile);
 
-
             foreach ($reader->getSheetIterator() as $sheet) {
                 foreach ($sheet->getRowIterator() as $rowNumber => $row) {
                     if ($rowNumber > 1) {
@@ -44,12 +43,10 @@ if (isset($_POST['import']) && !empty($_POST['import'])) {
                         $attendee = trim($row[2]);
                         $table_no = trim($row[3]);
 
-                        $ok = true;
-                    }
-                    if ($ok) {
 
                         $insert_query = "INSERT INTO attendees SET country = '" . mysqli_real_escape_string($dblink, $country) . "', "
-                                . "company = '" . mysqli_real_escape_string($dblink, $company) . "', name = '" . mysqli_real_escape_string($dblink, $attendee) . "', table_id = '" . mysqli_real_escape_string($dblink, $table_no) . "', attendance = 0";
+                                . "company = '" . mysqli_real_escape_string($dblink, $company) . "', name = '" . mysqli_real_escape_string($dblink, $attendee) . "', "
+                                . "table_id = '" . mysqli_real_escape_string($dblink, $table_no) . "', attendance = 0";
 
                         $insert_result = mysqli_query($dblink, $insert_query);
 
@@ -59,10 +56,13 @@ if (isset($_POST['import']) && !empty($_POST['import'])) {
                                 . "VALUES($getIssueNewestId, $table_no)";
 
                         $insert_AD_result = mysqli_query($dblink, $test);
-                    }
 
-                    //get available seats that is initially available
-                    $get_available_seats_query = "SELECT att.table_no,
+                    }
+                }
+            }
+            $reader->close();
+//          get available seats that is initially available
+            $get_available_seats_query = "SELECT att.table_no,
                                                     att.available_seats,
                                                     COUNT(a.attendee_id),
                                                     att.total_seats,
@@ -70,26 +70,21 @@ if (isset($_POST['import']) && !empty($_POST['import'])) {
                                                     FROM  all_table att
                                                     LEFT JOIN attendees a ON att.table_no = a.table_id
                                                     GROUP BY att.table_no";
-                    $get_available_seats_result = mysqli_query($dblink, $get_available_seats_query);
-                    if (mysqli_num_rows($get_available_seats_result) > 0) { // if one or more rows are returned do following
-                        while ($get_available_seats_row = mysqli_fetch_array($get_available_seats_result)) {
-                            $table_no = $get_available_seats_row['table_no'];
-                            $available_seats = $get_available_seats_row['available'];
-
-
-                            //update the balance to available seats
-                            $update_balance_query = "UPDATE all_table SET available_seats = $available_seats WHERE table_no = $table_no ";
-                            $update_balance_result = mysqli_query($dblink, $update_balance_query);
-                            echo $update_balance_query;
-                        }
-                    }
-                                        echo ("<script language='JavaScript'>
+            $get_available_seats_result = mysqli_query($dblink, $get_available_seats_query);
+            if (mysqli_num_rows($get_available_seats_result) > 0) { // if one or more rows are returned do following
+                while ($get_available_seats_row = mysqli_fetch_array($get_available_seats_result)) {
+                    $table_no = $get_available_seats_row['table_no'];
+                    $available_seats = $get_available_seats_row['available'];
+                    //update the balance to available seats
+                    $update_balance_query = "UPDATE all_table SET available_seats = $available_seats WHERE table_no = $table_no ";
+                    $update_balance_result = mysqli_query($dblink, $update_balance_query);
+                    echo $update_balance_query;
+                }
+            }
+            echo ("<script language='JavaScript'>
                         window.alert('File was successfully imported!')
                         window.location.href='../index.php';
                         </script>");
-                }
-            }
-            $reader->close();
         } else {
             echo ("<script language='JavaScript'>
     window.alert('Invalid file uploaded. Please use the template provided to import.')

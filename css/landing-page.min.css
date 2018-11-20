@@ -20,6 +20,9 @@ header.masthead{
     display: block;
     width: 100%;
 }
+#addbtn, #removebtn {
+    margin-left: 550px;
+}
 #table_attendees {
     padding-right: 30px;
 }
