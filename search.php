@@ -48,11 +48,11 @@ $raw_results = mysqli_query($dblink, "SELECT * FROM attendees
         </nav>
 
         <!-- Masthead -->
-<!--        <header class="sechead text-white text-center">
+        <header class="sechead text-white text-center">
             
             
             
-        </header>-->
+        </header>
         </br>
         <div>
             <form data-toggle="validator" method="POST" action="showOthers.php" class="form-horizontal" role="form" enctype="multipart/form-data">

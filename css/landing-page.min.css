@@ -10,17 +10,19 @@ h1,h2,h3,h4,h5,h6{
 }
 header.masthead{
     position:relative;background-color:#343a40;
-    background:url(../img/homepage.jpg) no-repeat center center;
+    background:url(../img/homepage-2.jpeg) no-repeat center center;
     background-size:cover;
-    padding-top:10rem;padding-bottom:10rem
+    padding-top:25rem;
+    padding-bottom:25rem
 }
 header.sechead{
     position:relative;background-color:#343a40;
-    background:url(../img/bg-sechead-2.jpeg) no-repeat center center;
+    background:url(../img/bg-sechead.jpg) no-repeat center center;
     background-size:cover;
-    padding-top:8rem;padding-bottom:8rem;
-    width:2000px; /* you can use % */
-    height: auto;
+    padding-bottom:10rem;
+    max-width: 100% !important;
+    height: auto !important;
+    
 }
 #floorplan{
     position:relative;

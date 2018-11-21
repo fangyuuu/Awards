@@ -47,9 +47,9 @@ $get_people_from_table_result = mysqli_query($dblink, $get_people_from_table_que
         </nav>
 
         <!-- Masthead -->
-<!--        <header class="sechead text-white text-center">
+        <header class="sechead text-white text-center">
             
-        </header>-->
+        </header>
         </br>
         <div class="row">
                 <div class ="col-md-6">
