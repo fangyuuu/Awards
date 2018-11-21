@@ -38,7 +38,6 @@ include_once "Functions/tableInformation.php";
 	<!-- Navigation -->
 	<nav class="navbar navbar-light bg-light static-top">
 		<div class="container">
-			<a class="navbar-brand" href="#">Asia Insurance Review 2018</a> 
                         <a data-toggle="modal" data-target="#addAttendeeModal" class="btn btn-primary" href="#" >Add New Attendee</a> 
                         <a data-toggle="modal" data-target="#importModal" class="btn btn-primary" href="#" >Import</a>
                         <a class="btn btn-primary" href="overview.php" >Overview</a>
@@ -51,10 +50,7 @@ include_once "Functions/tableInformation.php";
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
-				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5">Welcome to the Middle East Industry Awards Night!</h1>
-				</div>
-				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+				<div class="col-md-10 col-lg-8 col-xl-7" style="border-right-width: 1000px;margin-right: 0px;right: 10px;">
 					<form action="search.php" method="GET">
 						<div class="form-row">
 							<div class="col-12 col-md-9 mb-2 mb-md-0">

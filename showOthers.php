@@ -42,16 +42,18 @@ $get_people_from_table_result = mysqli_query($dblink, $get_people_from_table_que
         <!-- Navigation -->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="index.php">Asia Insurance Review 2018</a>
                 <a class="btn btn-success pull-right" href="index.php">Back to main page</a>
             </div>
         </nav>
 
         <!-- Masthead -->
-        <header class="masthead text-white text-center">
-            <div class="row">
+<!--        <header class="sechead text-white text-center">
+            
+        </header>-->
+        </br>
+        <div class="row">
                 <div class ="col-md-6">
-                    <img id="floorplan" src="img/floor-plan.png" alt="Floor Plan">
+                    <img id="floorplan" src="img/floorplan.png" alt="Floor Plan">
                 </div>
                 <div class="col-6 col-md-6" id="table_attendees">
                     <h4>Table 
@@ -84,8 +86,6 @@ $get_people_from_table_result = mysqli_query($dblink, $get_people_from_table_que
                     </div>
                 </div>
             </div>
-        </header>
-
 
        <!-- Footer -->
 	<footer class="footer bg-light">

@@ -43,13 +43,18 @@ $raw_results = mysqli_query($dblink, "SELECT * FROM attendees
         <!-- Navigation -->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="index.php">Asia Insurance Review 2018</a>
                 <a class="btn btn-success pull-right" href="index.php">Back to main page</a>
             </div>
         </nav>
 
         <!-- Masthead -->
-        <header class="masthead text-white text-center">
+<!--        <header class="sechead text-white text-center">
+            
+            
+            
+        </header>-->
+        </br>
+        <div>
             <form data-toggle="validator" method="POST" action="showOthers.php" class="form-horizontal" role="form" enctype="multipart/form-data">
                 <div class="col-12 col-md-9" id="table_attendees">
                     <div class="form-row" id="table-scroll">
@@ -75,11 +80,11 @@ $raw_results = mysqli_query($dblink, "SELECT * FROM attendees
                                             <td>' . $results['company'] . '</td>
                                             <td>' . $results['table_id'] . '</td>
                                             <td><input type="hidden" name="attendance" class="form-control form-control-sm" value="' . $results['attendee_id'] . '">' .
-                                            '<input type="submit" name="name" value="View" onclick="return confirm(`Are you sure?`)" /></td>
+                                            '<input class="btn btn-primary" type="submit" name="name" value="View"/></td>
                                         </tr>';
                                     }
                                 } else { // if there is no matching rows do following
-                                    echo "No results";
+                                    echo "<h4 class='text-center' style='align-content: center;'>No results</h4>";
                                 }
                                 ?>
 
@@ -89,8 +94,7 @@ $raw_results = mysqli_query($dblink, "SELECT * FROM attendees
                     </div>
                 </div>
             </form>
-        </header>
-
+        </div>
 
         <!-- Footer -->
 	<footer class="footer bg-light">

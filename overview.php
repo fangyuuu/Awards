@@ -55,7 +55,6 @@ include_once "Functions/tableInformation.php";
         <!-- Navigation -->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="#">Asia Insurance Review 2018</a>  
                 <a class="btn btn-success pull-right" href="index.php">Back to main page</a>
             </div>
         </nav>
