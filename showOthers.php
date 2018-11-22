@@ -53,7 +53,7 @@ $get_people_from_table_result = mysqli_query($dblink, $get_people_from_table_que
         </br>
         <div class="row">
                 <div class ="col-md-6">
-                    <img id="floorplan" src="img/floorplan.png" alt="Floor Plan">
+                    <img id="floorplan" src="img/floorplan.jpg" alt="Floor Plan">
                 </div>
                 <div class="col-6 col-md-6" id="table_attendees">
                     <h4>Table 
